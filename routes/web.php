@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\CheckIfIsAdmin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 
 Route::middleware('auth')
     ->prefix('admin')
@@ -17,6 +18,9 @@ Route::middleware('auth')
         Route::post('/users', [UserController::class, 'store'])->name('users.store');
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
     });
+
+
+Route::get('/main', [MainController::class, 'index']);    
 
 Route::get('/', function () {
     return view('welcome');
